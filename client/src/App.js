@@ -36,13 +36,6 @@ const App = () => {
     }
   };
 
-  const clearForm = () => {
-    setNewBookTitle("");
-    setNewBookAuthor("");
-    setNewBookDescription("");
-    setBookId("");
-  };
-
   const updateBook = (bookId) => {
     const bookObject = {
       author: newBookAuthor,
@@ -64,30 +57,15 @@ const App = () => {
 
   const deleteBook = (id) => {
     if (id !== "") {
-      bookService.deleteById(id).then(() => {;
+      bookService.deleteById(id).then(() => {
       setNotification("book was deleted!");
-      console.log('before', books)
       const newBooksList = books.filter(book => book.id !== bookId)
       setBooks(newBooksList);
-      console.log('after', books)
       clearForm();
       })
     } else {
       setNotification("No book was selected");
     }
-  };
-
-  const handleBookTitleChange = (event) => {
-    console.log(event.target.value);
-    setNewBookTitle(event.target.value);
-  };
-  const handleBookAuthorChange = (event) => {
-    console.log(event.target.value);
-    setNewBookAuthor(event.target.value);
-  };
-  const handleBookDescriptionChange = (event) => {
-    console.log(event.target.value);
-    setNewBookDescription(event.target.value);
   };
 
   const bookForm = () => (
@@ -114,8 +92,22 @@ const App = () => {
         </label>
       </div>
       <button type="submit">Save new</button>
+  
     </form>
   );
+
+  const handleBookTitleChange = (event) => {
+    console.log(event.target.value);
+    setNewBookTitle(event.target.value);
+  };
+  const handleBookAuthorChange = (event) => {
+    console.log(event.target.value);
+    setNewBookAuthor(event.target.value);
+  };
+  const handleBookDescriptionChange = (event) => {
+    console.log(event.target.value);
+    setNewBookDescription(event.target.value);
+  };
 
   const handleBookClick = (book) => {
     setNewBookTitle(book.title);
@@ -124,9 +116,16 @@ const App = () => {
     setBookId(book.id);
   };
 
+  const clearForm = () => {
+    setNewBookTitle("");
+    setNewBookAuthor("");
+    setNewBookDescription("");
+    setBookId("");
+  };
+
   return (
     <div>
-      <div>
+      <div className="form">
         <h1>Books</h1>
         {notification}
         {bookForm()}
