@@ -70,26 +70,31 @@ const App = () => {
 
   const bookForm = () => (
     <form onSubmit={addBook}>
-      <div>
+      <div className="row">
         <label>
-          Title:
-          <input value={newBookTitle} onChange={handleBookTitleChange} />
+          Title: 
+          <input type="text" id="title" value={newBookTitle} onChange={handleBookTitleChange} />
         </label>
       </div>
-      <div>
+      <div className="row">
         <label>
-          Author:
-          <input value={newBookAuthor} onChange={handleBookAuthorChange} />
+          Author: 
+          <input type="text" id="author" value={newBookAuthor} onChange={handleBookAuthorChange} />
         </label>
       </div>
-      <div>
+      <div className="row">
+      <div class="col-75">
         <label>
-          Description:
-          <input
+          Description: 
+          <textarea
+          type="textlg"
+            id="description"
             value={newBookDescription}
             onChange={handleBookDescriptionChange}
+            
           />
         </label>
+        </div>
       </div>
       <button type="submit">Save new</button>
   
@@ -124,9 +129,9 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <div className="form">
-        <h1>Books</h1>
+        
         {notification}
         {bookForm()}
         <button onClick={() => deleteBook(bookId)}>Delete</button>
