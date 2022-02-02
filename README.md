@@ -1,4 +1,4 @@
-
+Book app take-home assignment. Made with React and MongoDB.
 
 Installing: 
 
