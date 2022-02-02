@@ -4,7 +4,7 @@ Installing:
 
  ##### `"npm install", then navigate to client folder and "npm install"` 
 
- ##### `typing npm start in clint folder starts the whole application`
+ ##### `typing npm start in client folder starts the whole application`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 

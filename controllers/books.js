@@ -7,17 +7,6 @@ booksRouter.get('/', (request, response) => {
   })
 })
 
-booksRouter.get('/:id', (request, response, next) => {
-  Book.findById(request.params.id)
-    .then(book => {
-      if (book) {
-        response.json(book.toJSON())
-      } else {
-        response.status(404).end()
-      }
-    })
-    .catch(error => next(error))
-})
 
 booksRouter.post('/', (request, response, next) => {
   const body = request.body

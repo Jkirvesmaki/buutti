@@ -11,8 +11,8 @@ const App = () => {
   const [bookId, setBookId] = useState("");
 
   useEffect(() => {
-    bookService.getAll().then((initialBooks) => {
-      setBooks(initialBooks);
+    bookService.getAll().then((Books) => {
+      setBooks(Books);
     });
   }, []);
 
@@ -29,7 +29,6 @@ const App = () => {
       });
       setNotification("New book " + bookObject.title + " was added!");
       setNewBookTitle("");
-      console.log(newBookTitle);
       setNewBookAuthor("");
       setNewBookDescription("");
     } else {
@@ -51,10 +50,13 @@ const App = () => {
       description: newBookDescription,
     };
     if(bookId !== ''){
-    bookService.update(bookId, bookObject);
+    bookService.update(bookId, bookObject).then(() => {
+      bookService.getAll().then((Books) => {
+        setBooks(Books);
+      });
     setNotification(bookObject.title + " was updated!");
     clearForm();
-    }
+    })}
     else{
       setNotification('No book was selected')
     }
@@ -62,9 +64,14 @@ const App = () => {
 
   const deleteBook = (id) => {
     if (id !== "") {
-      bookService.deleteById(id);
+      bookService.deleteById(id).then(() => {;
       setNotification("book was deleted!");
+      console.log('before', books)
+      const newBooksList = books.filter(book => book.id !== bookId)
+      setBooks(newBooksList);
+      console.log('after', books)
       clearForm();
+      })
     } else {
       setNotification("No book was selected");
     }
