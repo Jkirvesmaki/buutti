@@ -27,9 +27,7 @@ const App = () => {
         setBooks(books.concat(returnedBook));
       });
       setNotification("New book " + bookObject.title + " was added!");
-      setNewBookTitle("");
-      setNewBookAuthor("");
-      setNewBookDescription("");
+      clearForm();
     } else {
       setNotification("Book needs a title!");
     }
