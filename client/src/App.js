@@ -16,8 +16,7 @@ const App = () => {
     });
   }, []);
 
-  const addBook = (event) => {
-    event.preventDefault();
+  const addBook = () => {
     const bookObject = {
       author: newBookAuthor,
       title: newBookTitle,
@@ -70,7 +69,7 @@ const App = () => {
 
   const bookForm = () => (
     <div>
-    <form onSubmit={addBook}>
+  
       <div>
         <label>
           Title:
@@ -104,10 +103,11 @@ const App = () => {
           />
         </label>
       </div>
-      <button type="submit">Save new</button>
-    </form>
+   
+        <button onClick={() => addBook()}>Save New</button>
         <button onClick={() => deleteBook(bookId)}>Delete</button>
         <button onClick={() => updateBook(bookId)}>Save</button>
+        
         </div>
   );
 
