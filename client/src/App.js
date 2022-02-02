@@ -4,7 +4,6 @@ import bookService from "./services/books";
 
 const App = () => {
   const [books, setBooks] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(null);
   const [notification, setNotification] = useState(null);
   const [newBookTitle, setNewBookTitle] = useState("");
   const [newBookAuthor, setNewBookAuthor] = useState("");
@@ -24,42 +23,50 @@ const App = () => {
       title: newBookTitle,
       description: newBookDescription,
     };
-    bookService.create(bookObject).then((returnedBook) => {
-      setBooks(books.concat(returnedBook));
-    });
-    setNotification("New book " + bookObject.title + " was added!");
-    setNewBookTitle("");
-    console.log(newBookTitle);
-    setNewBookAuthor("");
-    setNewBookDescription("");
+    if (newBookTitle !== "") {
+      bookService.create(bookObject).then((returnedBook) => {
+        setBooks(books.concat(returnedBook));
+      });
+      setNotification("New book " + bookObject.title + " was added!");
+      setNewBookTitle("");
+      console.log(newBookTitle);
+      setNewBookAuthor("");
+      setNewBookDescription("");
+    } else {
+      setNotification("Book needs a title!");
+    }
   };
 
-  const updateBook = (bookId, book) => {
+  const clearForm = () => {
+    setNewBookTitle("");
+    setNewBookAuthor("");
+    setNewBookDescription("");
+    setBookId("");
+  };
+
+  const updateBook = (bookId) => {
     const bookObject = {
       author: newBookAuthor,
       title: newBookTitle,
       description: newBookDescription,
     };
-
+    if(bookId !== ''){
     bookService.update(bookId, bookObject);
-    setNotification("New book " + bookObject.title + " was updated!");
-    setNewBookTitle("");
-
-    setNewBookAuthor("");
-    setNewBookDescription("");
+    setNotification(bookObject.title + " was updated!");
+    clearForm();
+    }
+    else{
+      setNotification('No book was selected')
+    }
   };
 
   const deleteBook = (id) => {
     if (id !== "") {
       bookService.deleteById(id);
-
       setNotification("book was deleted!");
-      setNewBookTitle("");
-      setNewBookAuthor("");
-      setNewBookDescription("");
-      setBookId("");
+      clearForm();
     } else {
-      setNotification("No id was given");
+      setNotification("No book was selected");
     }
   };
 
@@ -119,14 +126,12 @@ const App = () => {
         <button onClick={() => deleteBook(bookId)}>Delete</button>
         <button onClick={() => updateBook(bookId)}>Save</button>
       </div>
-      <div>
-        <ul>
-          {books.map((book) => (
-            <button className="book" onClick={() => handleBookClick(book)}>
-              <Book key={book.id} book={book} />
-            </button>
-          ))}
-        </ul>
+      <div className="booklist">
+        {books.map((book) => (
+          <button className="bookbutton" onClick={() => handleBookClick(book)}>
+            <Book key={book.id} book={book} />
+          </button>
+        ))}
       </div>
     </div>
   );

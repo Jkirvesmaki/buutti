@@ -6,8 +6,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.author {
+  font-size: 20px;
+  margin: 2px;
+}
+.title {
+font-size: 25px;
+}
+.booklist {
+  display:flex;
+  flex-wrap: wrap;
+}
+.book {
+  width: 25rem; 
 }

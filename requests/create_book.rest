@@ -1,9 +1,0 @@
-POST http://localhost:3001/api/books
-Content-Type: application/json
-
-{
-    "title": "testi",
-    "author": "testi",
-    "description": "testi"
- 
-}
