@@ -50,7 +50,7 @@ const App = () => {
   };
 
   const deleteBook = (id) => {
-    if (id != "") {
+    if (id !== "") {
       bookService.deleteById(id);
 
       setNotification("book was deleted!");
