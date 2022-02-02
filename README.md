@@ -10,7 +10,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 #### `To use this version locally you need to define your mongoDB configs in a .env file`
 
-> `MONGODB_URI=mongodb+srv://exampleusername:password@-------.qejth.mongodb.net/note-app?retryWrites=true&w=majority`
+> `MONGODB_URI=mongodb+srv://exampleusername:password@-------.qejth.mongodb.net/?retryWrites=true&w=majority`
 > `PORT=3001`
 
 
