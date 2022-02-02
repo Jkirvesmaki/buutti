@@ -8,7 +8,7 @@ const Book = ({ book }) => {
       <div className="author">
       {book.author} 
       </div>
-      <img src={bookImage}></img>
+      <img alt="book" src={bookImage}></img>
    <div className="title">
       {book.title} 
       </div>
