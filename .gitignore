@@ -10,6 +10,8 @@ node_modules
 
 
 # misc
+build
+procfile
 .env
 .DS_Store
 .env.local
