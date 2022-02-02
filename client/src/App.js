@@ -42,61 +42,73 @@ const App = () => {
       title: newBookTitle,
       description: newBookDescription,
     };
-    if(bookId !== ''){
-    bookService.update(bookId, bookObject).then(() => {
-      bookService.getAll().then((Books) => {
-        setBooks(Books);
+    if (bookId !== "") {
+      bookService.update(bookId, bookObject).then(() => {
+        bookService.getAll().then((Books) => {
+          setBooks(Books);
+        });
+        setNotification(bookObject.title + " was updated!");
+        clearForm();
       });
-    setNotification(bookObject.title + " was updated!");
-    clearForm();
-    })}
-    else{
-      setNotification('No book was selected')
+    } else {
+      setNotification("No book was selected");
     }
   };
 
   const deleteBook = (id) => {
     if (id !== "") {
       bookService.deleteById(id).then(() => {
-      setNotification("book was deleted!");
-      const newBooksList = books.filter(book => book.id !== bookId)
-      setBooks(newBooksList);
-      clearForm();
-      })
+        setNotification("book was deleted!");
+        const newBooksList = books.filter((book) => book.id !== bookId);
+        setBooks(newBooksList);
+        clearForm();
+      });
     } else {
       setNotification("No book was selected");
     }
   };
 
   const bookForm = () => (
+    <div>
     <form onSubmit={addBook}>
       <div>
         <label>
-          Title: 
-          <input type="text" id="title" value={newBookTitle} onChange={handleBookTitleChange} />
+          Title:
+          <input
+            type="text"
+            id="title"
+            value={newBookTitle}
+            onChange={handleBookTitleChange}
+          />
         </label>
       </div>
       <div>
         <label>
-          Author: 
-          <input type="text" id="author" value={newBookAuthor} onChange={handleBookAuthorChange} />
+          Author:
+          <input
+            type="text"
+            id="author"
+            value={newBookAuthor}
+            onChange={handleBookAuthorChange}
+          />
         </label>
       </div>
       <div>
         <label>
-          Description: 
+          Description:
           <textarea
-          type="textlg"
+            type="textlg"
             id="description"
             value={newBookDescription}
             onChange={handleBookDescriptionChange}
-            
           />
         </label>
       </div>
       <button type="submit">Save new</button>
-  
     </form>
+        <button onClick={() => deleteBook(bookId)}>Delete</button>
+        <button onClick={() => updateBook(bookId)}>Save</button>
+        </div>
   );
 
   const handleBookTitleChange = (event) => {
@@ -129,11 +141,9 @@ const App = () => {
   return (
     <div className="container">
       <div className="form">
-        
         {notification}
         {bookForm()}
-        <button onClick={() => deleteBook(bookId)}>Delete</button>
-        <button onClick={() => updateBook(bookId)}>Save</button>
+    
       </div>
       <div className="booklist">
         {books.map((book) => (
