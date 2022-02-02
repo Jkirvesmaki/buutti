@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
     "axios": "^0.21.1",
@@ -15,7 +14,7 @@
   },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"cd server && npm run start\"",
-    "start front" : "react-scripts start",
+    "start front": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -23,8 +22,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -42,5 +40,4 @@
   "devDependencies": {
     "json-server": "^0.16.3"
   }
-
 }
