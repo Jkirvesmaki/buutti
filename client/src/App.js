@@ -70,20 +70,19 @@ const App = () => {
 
   const bookForm = () => (
     <form onSubmit={addBook}>
-      <div className="row">
+      <div>
         <label>
           Title: 
           <input type="text" id="title" value={newBookTitle} onChange={handleBookTitleChange} />
         </label>
       </div>
-      <div className="row">
+      <div>
         <label>
           Author: 
           <input type="text" id="author" value={newBookAuthor} onChange={handleBookAuthorChange} />
         </label>
       </div>
-      <div className="row">
-      <div class="col-75">
+      <div>
         <label>
           Description: 
           <textarea
@@ -94,7 +93,6 @@ const App = () => {
             
           />
         </label>
-        </div>
       </div>
       <button type="submit">Save new</button>
   
