@@ -2,7 +2,9 @@ Book app take-home assignment. Made with React, node, express and MongoDB.
 
 Installing: 
 
- ##### `"npm install", then navigate to client folder and "npm install"` 
+ ##### `clone the repository to your machine`
+
+ ##### `type "npm install" into your terminal, then navigate to client folder and type "npm install" again` 
 
  ##### `typing npm start in client folder starts the whole application`
 
